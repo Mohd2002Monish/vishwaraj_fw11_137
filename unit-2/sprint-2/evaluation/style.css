@@ -3,7 +3,9 @@
     height: 350px;
     margin: 20px;
     float: left;
-    border: 1px solid black;
+    padding: 10px;
+    border: 1px solid blue;
+    border-radius: 4px;
 }
 .block_2 {
     width: 330px;
@@ -11,7 +13,8 @@
     margin: 20px;
     padding: 10px;
     float: left;
-    border: 1px solid black;
+    border: 1px solid blue;
+    border-radius: 4px;
 }
 h3 {
     font-style: unset;
@@ -24,7 +27,7 @@ h3 {
 .name {
     font-size: 20px;
 }
-.block_2 > p {
+p {
     font-size: 17px;
     font-weight: lighter;
 }
