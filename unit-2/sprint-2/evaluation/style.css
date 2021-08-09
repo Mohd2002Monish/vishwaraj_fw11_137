@@ -1,7 +1,24 @@
-.block {
-    width: 300px;
-    height: 300px;
+.block_1 {
+    width: 350px;
+    height: 350px;
     margin: 20px;
     float: left;
     border: 1px solid black;
+}
+.block_2 {
+    width: 350px;
+    height: 80px;
+    margin: 20px;
+    float: left;
+    border: 1px solid black;
+}
+h3 {
+    font-style: unset;
+    color: grey;
+}
+.clear {
+    clear: both;
+}
+.name {
+    font-size: 10px;
 }
