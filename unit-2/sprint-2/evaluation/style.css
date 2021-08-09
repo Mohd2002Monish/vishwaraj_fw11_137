@@ -6,19 +6,25 @@
     border: 1px solid black;
 }
 .block_2 {
-    width: 350px;
-    height: 80px;
+    width: 330px;
+    height: 100px;
     margin: 20px;
+    padding: 10px;
     float: left;
     border: 1px solid black;
 }
 h3 {
     font-style: unset;
+    font-size: 20px;
     color: grey;
 }
 .clear {
     clear: both;
 }
 .name {
-    font-size: 10px;
+    font-size: 20px;
+}
+.block_2 > p {
+    font-size: 17px;
+    font-weight: lighter;
 }
