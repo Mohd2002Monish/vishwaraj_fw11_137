@@ -10,15 +10,24 @@
             text-align: center;
         }
         th {
-
+            border: 1px solid black;
             width: 300px;
             height: 400px;
             padding: 15px;
             margin: auto;
         }
-        h1 + div {
+        .content {
             width: 1000px;
             margin: auto;
+        }
+        img + p {
+            float: left;
+        }
+        p + p {
+            float: right;
+        }
+        .clear {
+            clear: both;
         }
     </style>
 </head>
@@ -27,22 +36,28 @@
     <div>
 
     </div>
-    <div>
+    <div class="content">
         <table>
             <tr>
                 <th>
                 <img src="https://via.placeholder.com/300x300" />
                 <p>Jewellary 1</p>
+                <p>100</p>
+                <div class="clear"></div>
                 <button>Add to cart</button>
                 </th>
                 <th>
                 <img src="https://via.placeholder.com/300x300" />
                 <p>Jewellary 2</p>
+                <p>200</p>
+                <div class="clear"></div>
                 <button>Add to cart</button>
                 </th>
                 <th>
                 <img src="https://via.placeholder.com/300x300" />
                 <p>Jewellary 3</p>
+                <p>300</p>
+                <div class="clear"></div>
                 <button>Add to cart</button>
                 </th>
             </tr>
@@ -50,16 +65,22 @@
                 <th>
                 <img src="https://via.placeholder.com/300x300" />
                 <p>Jewellary 4</p>
+                <p>400</p>
+                <div class="clear"></div>
                 <button>Add to cart</button>
                 </th>
                 <th>
                 <img src="https://via.placeholder.com/300x300" />
                 <p>Jewellary 5</p>
+                <p>500</p>
+                <div class="clear"></div>
                 <button>Add to cart</button>
                 </th>
                 <th>
                 <img src="https://via.placeholder.com/300x300" />
                 <p>Jewellary 6</p>
+                <p>600</p>
+                <div class="clear"></div>
                 <button>Add to cart</button>
                 </th>
             </tr>
@@ -67,6 +88,8 @@
     </div>
 </body>
     <script>
-
+        var button = function addToCart(params) {
+            
+        }
     </script>
 </html>
