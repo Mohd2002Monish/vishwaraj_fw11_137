@@ -1,8 +1,22 @@
+function findSingle(n, arr) {
+    var bag = {}
+    for (let i = 0; i < (n*2)-1; i++) {
+        if (bag[arr[i]]) {
+            delete bag[arr[i]]
+        }
+        else {
+            bag[arr[i]]=1
+        }
+    }
+    console.log(Object.keys(bag)[0])
+}
+
 function runProgram(input) {
     input = input.trim().split('\n')
-    for (let i = 0; i < input.length; i+=2) {
+    for (let i = 1; i < input.length; i+=2) {
         var n = +input[i].trim()
         var arr = input[i+1].trim().split(' ').map(Number)
+        findSingle(n, arr)
     }
 
 }
