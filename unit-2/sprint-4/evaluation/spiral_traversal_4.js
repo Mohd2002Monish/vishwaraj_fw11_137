@@ -5,14 +5,23 @@ function spiralTraverse4(N, arr) {
     var right = N-1
     var ans = []
     for (let i = 0; i < N/2; i++) {
-        for (let r = bottom; r > top; r--) {
+        for (let r = bottom; r >= top; r--) {
             ans.push(arr[r][right]) 
         }
         right--
-        for (let t = right; t < left; t++) {
-            const element = array[t];
-            
+        for (let t = right; t >= left; t--) {
+            ans.push(arr[top][t]) 
         }
+        top++
+        for (let l = top; l <= bottom; l++) {
+            ans.push(arr[l][left]) 
+        }
+        left++
+        for (let b = left; b <= right; b++) {
+            ans.push(arr[bottom][b]) 
+        }
+        bottom--
+
         
     }
     console.log(ans.join(' '))
