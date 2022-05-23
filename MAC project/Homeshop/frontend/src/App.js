@@ -1,20 +1,22 @@
 import './App.css';
 import PrimaryNavbar from './components/Navbar';
-import Prodcard from './components/Prodcard';
-import data from './components/data';
+import {BrowserRouter,Routes, Route} from 'react-router-dom'
+import HomeScreen from './screens/HomeScreen';
+import ProductScreen from './screens/ProductScreen';
 
 function App() {
   return (
+    <BrowserRouter>
     <div className="App">
       <PrimaryNavbar/>
       <main>
-        <div className='prod_grid'>
-          {data.prods.map(product =>(
-            <Prodcard key={product._id} product={product}></Prodcard>
-          ))}
-        </div>
+        <Routes>
+        <Route path='/product/:id' element={<ProductScreen/>}></Route>
+        <Route path='/' element={<HomeScreen/>}></Route>
+        </Routes>
       </main>
     </div>
+    </BrowserRouter>
   );
 }
 
