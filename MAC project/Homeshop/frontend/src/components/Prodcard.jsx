@@ -20,7 +20,7 @@ export default function Prodcard(props) {
             {product.name}
           </Typography>
         </a>
-        <Typography variant="body2" color="text.secondary">
+        <Typography variant="body2" color="success">
           <span style={{ fontWeight: 600, color: `black` }}>Discription: </span>{" "}
           {product.description}
         </Typography>

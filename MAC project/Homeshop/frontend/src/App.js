@@ -11,8 +11,8 @@ function App() {
       <PrimaryNavbar/>
       <main>
         <Routes>
-        <Route path='/product/:id' element={<ProductScreen/>}></Route>
-        <Route path='/' element={<HomeScreen/>}></Route>
+          <Route path='/product/:id' element={<ProductScreen />}></Route>
+          <Route path='/' element={<HomeScreen/>}></Route>
         </Routes>
       </main>
     </div>

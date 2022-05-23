@@ -4,14 +4,13 @@ import data from "../components/data";
 import Rating from "../components/Rating";
 
 export default function ProductScreen(props) {
-  console.log(props)
-//   const product = data.prods.find((el) => el._id === props.match.params.id);
-//   if (!product) {
-//     return <div>Product Not Found</div>;
-//   }
+  const product = data.prods.find((el) => el._id === props.match.params.id);
+  if (!product) {
+    return <div>Product Not Found</div>;
+  }
   return (
     <div className="row">
-      {/* <div className="col-2">
+      <div className="col-2">
         <img className="large" src={product.image} alt={product.name}></img>
       </div>
       <div className="col-1">
@@ -60,7 +59,7 @@ export default function ProductScreen(props) {
             </li>
           </ul>
         </div>
-      </div> */}
+      </div>
     </div>
   );
 }
