@@ -17,7 +17,7 @@ main {
     color: #f0c040;
     margin: 0.1rem;
 }
-.rating span {
-    color: #f0c040;
+.rating span:last-child {
+    color: #404040;
     margin: 0.1rem;
 }

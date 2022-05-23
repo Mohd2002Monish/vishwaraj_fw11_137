@@ -15,7 +15,7 @@ export default function Prodcard(props) {
       <CardMedia
         component="img"
         height="400"
-        image="/static/images/cards/contemplative-reptile.jpg"
+        image={product.image}
         href=""
       /></a>
       <CardContent>
@@ -28,7 +28,7 @@ export default function Prodcard(props) {
         <Rating rating={product.rating} numReviews={product.numReviews}></Rating>
       </CardContent>
       <CardActions sx={{display:'flex', justifyContent: `space-between`, marginTop: -3}}>
-        <Typography sx={{size:`small`, color:`#f0c040;`, marginLeft:1.3}}>₹ {product.price}</Typography>
+        <Typography sx={{size:`medium`, color:`black`, marginLeft:1.3}}>₹ {product.price}</Typography>
         <Button variant="contained" size="small">Add to cart</Button>
       </CardActions>
     </Card>
