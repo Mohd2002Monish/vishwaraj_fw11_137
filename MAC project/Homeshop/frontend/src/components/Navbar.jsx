@@ -167,14 +167,10 @@ export default function PrimaryNavbar() {
           </Search>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-            <IconButton
-              size="large"
-              aria-label=""
-              color="inherit"
-            >
-                <Badge badgeContent={0} color="error">
-                    <AddShoppingCartRoundedIcon/>
-                </Badge>
+            <IconButton size="large" aria-label="" color="inherit">
+              <Badge badgeContent={0} color="error">
+                <AddShoppingCartRoundedIcon />
+              </Badge>
             </IconButton>
             <IconButton
               size="large"

@@ -1,27 +1,31 @@
-import * as React from "react";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import Rating from "./Rating";
+import * as React from 'react';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Rating from './Rating';
+import { Link } from 'react-router-dom';
 
 export default function Prodcard(props) {
   const { product } = props;
   return (
     <Card sx={{ maxWidth: 345, marginBottom: `1rem` }}>
-      <a href={`/product/${product._id}`}>
-        <CardMedia component="img" height="400" image={product.image} href="" />
-      </a>
+      <Link to={`/product/${product._id}`}>
+        <CardMedia component="img" height="400" image={product.image} />
+      </Link>
       <CardContent>
-        <a style={{color:`black`, textDecoration:`none`}} href={`/product/${product._id}`}>
+        <Link
+          style={{ color: `black`, textDecoration: `none` }}
+          to={`/product/${product._id}`}
+        >
           <Typography gutterBottom variant="h5" component="div">
             {product.name}
           </Typography>
-        </a>
+        </Link>
         <Typography variant="body2" color="success">
-          <span style={{ fontWeight: 600, color: `black` }}>Discription: </span>{" "}
+          <span style={{ fontWeight: 600, color: `black` }}>Discription: </span>{' '}
           {product.description}
         </Typography>
         <Rating
@@ -30,7 +34,7 @@ export default function Prodcard(props) {
         ></Rating>
       </CardContent>
       <CardActions
-        sx={{ display: "flex", justifyContent: `space-between`, marginTop: -3 }}
+        sx={{ display: 'flex', justifyContent: `space-between`, marginTop: -3 }}
       >
         <Typography sx={{ size: `medium`, color: `black`, marginLeft: 1.3 }}>
           ₹ {product.price}
