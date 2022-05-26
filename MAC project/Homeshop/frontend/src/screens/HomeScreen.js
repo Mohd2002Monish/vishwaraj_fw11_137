@@ -1,6 +1,5 @@
 import { React, useEffect, useReducer, useState } from 'react';
 import Prodcard from '../components/Prodcard';
-// import data from '../components/data';
 import axios from 'axios';
 
 const reducer = (state, action) => {
@@ -38,9 +37,15 @@ export default function HomeScreen() {
   return (
     <div>
       <div className="row center">
-        {products.map((product) => (
-          <Prodcard key={product._id} product={product}></Prodcard>
-        ))}
+        {loading ? (
+          <div>Loading...</div>
+        ) : error ? (
+          <div>{error}</div>
+        ) : (
+          products.map((product) => (
+            <Prodcard key={product._id} product={product}></Prodcard>
+          ))
+        )}
       </div>
     </div>
   );

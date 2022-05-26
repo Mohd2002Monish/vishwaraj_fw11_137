@@ -3,6 +3,7 @@ import PrimaryNavbar from './components/Navbar';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import HomeScreen from './screens/HomeScreen';
 import ProductScreen from './screens/ProductScreen';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
             <Route path="/product/:_id" element={<ProductScreen />}></Route>
             <Route path="/" element={<HomeScreen />}></Route>
           </Routes>
+          <Footer></Footer>
         </main>
       </div>
     </BrowserRouter>

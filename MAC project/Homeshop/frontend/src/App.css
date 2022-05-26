@@ -1,6 +1,7 @@
 /* product display grid */
 main {
   grid-area: main;
+  margin-top: 70px;
   padding: 1rem;
 }
 .row {
@@ -42,5 +43,13 @@ img.large {
   background-color: #f8f8f8;
   border-radius: 0.5rem;
   margin: 1rem;
+  padding: 1rem;
+}
+/* Footer */
+.footer {
+  color: white;
+  background-color: #1976d2;
+  width: 100%;
+  text-align: center;
   padding: 1rem;
 }
