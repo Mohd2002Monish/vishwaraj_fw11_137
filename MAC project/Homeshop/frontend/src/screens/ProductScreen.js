@@ -1,9 +1,12 @@
 import { Button } from '@mui/material';
 import axios from 'axios';
-import { React, useEffect, useReducer } from 'react';
-import { useParams } from 'react-router-dom';
-import data from '../components/data';
+import { React, useContext, useEffect, useReducer } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import Loading from '../components/Loading';
+import Popup from '../components/Popup';
 import Rating from '../components/Rating';
+import { Store } from '../Store';
+import { getError } from '../utils';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -19,12 +22,13 @@ const reducer = (state, action) => {
 };
 
 export default function ProductScreen() {
+  const navigate = useNavigate();
   const params = useParams();
   const { slug } = params;
   const [{ loading, error, product }, dispatch] = useReducer(reducer, {
     loading: true,
     error: '',
-    product: {},
+    product: [],
   });
   useEffect(() => {
     const fetchData = async () => {
@@ -33,20 +37,34 @@ export default function ProductScreen() {
         const result = await axios.get(`/api/products/slug/${slug}`);
         dispatch({ type: 'FETCH_SUCCESS', payload: result.data });
       } catch (err) {
-        dispatch({ type: 'FETCH_FAIL', payload: err.message });
+        dispatch({ type: 'FETCH_FAIL', payload: getError(err) });
       }
     };
     fetchData();
   }, [slug]);
-  console.log(product);
+
+  const { state, dispatch: ctxDispatch } = useContext(Store);
+  const { cart } = state;
+  const addToCartHandler = async () => {
+    const existItem = cart.cartItems.find((x) => x._id === product._id);
+    const quantity = existItem ? existItem.quantity + 1 : 1;
+    const { data } = await axios.get(`/api/products/${product._id}`);
+    if (data.countInStock < quantity) {
+      window.alert('Sorry, Product is out of stock');
+      return;
+    }
+    ctxDispatch({ type: 'ADD_TO_CART', payload: { ...product, quantity } });
+    navigate('/cart');
+  };
+
   return loading ? (
-    <div>Loading...</div>
+    <Loading></Loading>
   ) : error ? (
-    <div>{error}</div>
+    <Popup variant="error">{error}</Popup>
   ) : (
     <div className="row">
       <div className="col-2">
-        <img className="large" src={product.image} alt={product.name}></img>
+        <img className="small" src={product.image} alt={product.name}></img>
       </div>
       <div className="col-1">
         <ul>
@@ -88,7 +106,11 @@ export default function ProductScreen() {
               </div>
             </li>
             <li>
-              <Button variant="contained" size="small">
+              <Button
+                onClick={addToCartHandler}
+                variant="contained"
+                size="small"
+              >
                 Add to cart
               </Button>
             </li>

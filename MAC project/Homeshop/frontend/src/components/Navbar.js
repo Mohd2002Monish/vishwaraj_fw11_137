@@ -13,6 +13,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import AddShoppingCartRoundedIcon from '@mui/icons-material/AddShoppingCartRounded';
 import MoreIcon from '@mui/icons-material/MoreVert';
+import { Link } from 'react-router-dom';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -54,7 +55,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function PrimaryNavbar() {
+export default function PrimaryNavbar(props) {
+  const { cart } = props;
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -118,16 +120,17 @@ export default function PrimaryNavbar() {
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
-        <IconButton
-          size="large"
-          aria-label="show 17 new notifications"
-          color="inherit"
-        >
-          <Badge>
-            <AddShoppingCartRoundedIcon />
-          </Badge>
-        </IconButton>
-        <p>cart</p>
+        <Link to={'/cart'}>
+          <IconButton size="large" aria-label="" color="inherit">
+            <Badge
+              badgeContent={cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
+              color="error"
+            >
+              <AddShoppingCartRoundedIcon />
+            </Badge>
+          </IconButton>
+          <p>cart</p>
+        </Link>
       </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
@@ -168,7 +171,13 @@ export default function PrimaryNavbar() {
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             <IconButton size="large" aria-label="" color="inherit">
-              <Badge badgeContent={0} color="error">
+              <Badge
+                badgeContent={cart.cartItems.reduce(
+                  (a, c) => a + c.quantity,
+                  0
+                )}
+                color="error"
+              >
                 <AddShoppingCartRoundedIcon />
               </Badge>
             </IconButton>

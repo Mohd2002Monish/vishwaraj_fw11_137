@@ -1,6 +1,8 @@
-import { React, useEffect, useReducer, useState } from 'react';
+import { React, useEffect, useReducer } from 'react';
 import Prodcard from '../components/Prodcard';
 import axios from 'axios';
+import Loading from '../components/Loading';
+import Popup from '../components/Popup';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -38,12 +40,12 @@ export default function HomeScreen() {
     <div>
       <div className="row center">
         {loading ? (
-          <div>Loading...</div>
+          <Loading></Loading>
         ) : error ? (
-          <div>{error}</div>
+          <Popup variant="error">{error}</Popup>
         ) : (
           products.map((product) => (
-            <Prodcard key={product._id} product={product}></Prodcard>
+            <Prodcard key={product.slug} product={product}></Prodcard>
           ))
         )}
       </div>
