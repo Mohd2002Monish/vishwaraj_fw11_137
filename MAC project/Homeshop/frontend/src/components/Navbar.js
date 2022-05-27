@@ -60,6 +60,7 @@ export default function PrimaryNavbar(props) {
   const { cart } = props;
   const { state, dispatch: ctxDispatch } = React.useContext(Store);
   const { userInfo } = state;
+  console.log(userInfo);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
