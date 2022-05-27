@@ -20,8 +20,8 @@ function App() {
           <Routes>
             <Route path="/product/:slug" element={<ProductScreen />}></Route>
             <Route path="/cart" element={<CartScreen />}></Route>
-            <Route path="/" element={<HomeScreen />}></Route>
             <Route path="/signin" element={<SigninScreen />}></Route>
+            <Route path="/" element={<HomeScreen />}></Route>
           </Routes>
           <Footer></Footer>
         </main>

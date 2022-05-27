@@ -14,6 +14,7 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import AddShoppingCartRoundedIcon from '@mui/icons-material/AddShoppingCartRounded';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import { Link } from 'react-router-dom';
+import { Store } from '../Store';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -57,6 +58,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export default function PrimaryNavbar(props) {
   const { cart } = props;
+  const { state, dispatch: ctxDispatch } = React.useContext(Store);
+  const { userInfo } = state;
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -80,6 +83,11 @@ export default function PrimaryNavbar(props) {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
+  const signOutHandeler = () => {
+    ctxDispatch({ type: 'USER_SIGNOUT' });
+    localStorage.removeItem('userInfo');
+  };
+
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
     <Menu
@@ -97,8 +105,9 @@ export default function PrimaryNavbar(props) {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem onClick={handleMenuClose}>User Profile</MenuItem>
+      <MenuItem onClick={handleMenuClose}>Order History</MenuItem>
+      <MenuItem onClick={signOutHandeler}>Sign Out</MenuItem>
     </Menu>
   );
 
